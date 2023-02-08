@@ -70,7 +70,7 @@ int main()
         while (getline(file, line)) {
             cout << "> " << line << endl;
         }
-        //cout << "\n> Generated " << VKUPNO << " codes! \n> Check nitros.txt file!" << endl;
+        cout << "\n> Generated " << VKUPNO << " codes! \n> Check nitros.txt file!" << endl;
  
         outputFile.close();
  
