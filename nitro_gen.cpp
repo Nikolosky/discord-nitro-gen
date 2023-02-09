@@ -6,7 +6,7 @@
 #include <vector>
 #include <Windows.h>
 #include <unistd.h>
- 
+
 using namespace std;
  
 bool fromBegining = false;
@@ -40,7 +40,7 @@ int main()
         cout << "/ /_/ /   / /|  /  " << endl;
         cout << "\\____/   /_/ |_/  " << endl;
  
-        cout << "\n\n> Hello! I am Mar4e 15 yo programmer! \n> Here is super fast discord generator!";
+        cout << "\n\n> Hello! I am Mar4e 15 yo programmer! \n> Here is super fast discord generator!" << endl;
         sleep(3);
         system("cls");
  
