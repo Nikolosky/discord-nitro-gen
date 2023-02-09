@@ -52,8 +52,9 @@ int main()
         int VKUPNO;
         int OPCIJA;
 
-        cout << "\n\n> 1. Generator \n> 2. Checker \n\n> 0. Exit \n\n> Option: ";
+        cout << "\n\n> 1. Generator \n> 2. Checker \n> 3. Social \n\n> 0. Exit \n> Option: ";
         cin >> OPCIJA;
+
         if(OPCIJA == 0) {
             exit(0);
         }
@@ -62,6 +63,9 @@ int main()
         }
         else if(OPCIJA == 2) {
             goto CHECKER;
+        }
+        else if(OPCIJA == 3) {
+            system("start mar4ee.glitch.me");
         }
         else {
             cout << "Pogresna opcija!" << endl;
@@ -114,17 +118,17 @@ int main()
         }
 
         int goagain;
-        cout << "\n> 1. Refresh applicacion \n> 2. Soical \n\n> 3. Exit \n> Option: ";
+        cout << "\n> 1. Refresh applicacion \n> 2. Soical \n\n> 0. Exit: ";
         cin >> goagain;
-        if(goagain == 1)
+        if(goagain == 0) {
+            exit(0);
+        }
+        else if(goagain == 1)
         {
             fromBegining = true;
         }
         else if(goagain == 2) {
             system("start https://mar4ee.glitch.me");
-        }
-        else if(goagain == 3) {
-            exit(0);
         }
         else {
             cout << "> Wrong option, try again!";
