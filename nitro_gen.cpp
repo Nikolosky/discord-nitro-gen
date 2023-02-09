@@ -41,7 +41,7 @@ int main()
         cout << "\\____/   /_/ |_/  " << endl;
  
         cout << "\n\n> Hello! I am Mar4e 15 yo programmer! \n> Here is super fast discord generator!";
-        sleep(5);
+        sleep(3);
         system("cls");
  
         cout << "     __  ___                   __ __        " << endl;
@@ -51,36 +51,81 @@ int main()
         cout << " /_/  /_/   \\ ___/  /_/       /_/    \\___/" << endl;
  
         int VKUPNO;
- 
-        cout << "\n\n> SOON NITRO CHECKER!" << endl;
-        cout << "> How much to generate: " << endl;
-        cin >> VKUPNO;
- 
-        vector<string> generated;
-        string line;
-        ifstream file("nitros.txt");
-        ofstream outputFile;
-        outputFile.open("nitros.txt");
+        int OPCIJA;
 
-        for (int i = 0; i <= VKUPNO; i++) {
-            outputFile << genNitro() << endl;
-            generated.push_back(genNitro());
-            //cout << generated[VKUPNO] << endl;
+        cout << "\n\n> 1. Generator \n> 2. Checker \n> 3. Exit \n\n> Option: ";
+        cin >> OPCIJA;
+        if(OPCIJA == 1) {
+            goto GENERATOR;
         }
-        while (getline(file, line)) {
-            cout << "> " << line << endl;
+        else if(OPCIJA == 2) {
+            goto CHECKER;
         }
-        //cout << "\n> Generated " << VKUPNO << " codes! \n> Check nitros.txt file!" << endl;
- 
-        outputFile.close();
- 
-        cout << "\n> If you want to generate again type Y/y or if you want to exit N/n: ";
+        else if(OPCIJA == 3) {
+            exit(0);
+        }
+        else {
+            cout << "Pogresna opcija!" << endl;
+            sleep(3);
+            exit(0);
+        }
+
+        GENERATOR: {
+            cout << "> How much to generate: " << endl;
+            cin >> VKUPNO;
+    
+            vector<string> generated;
+            string line;
+            ifstream file("codes.txt");
+            ofstream outputFile;
+            outputFile.open("codes.txt");
+
+            for (int i = 0; i <= VKUPNO; i++) {
+                outputFile << genNitro() << endl;
+                generated.push_back(genNitro());
+                //cout << generated[VKUPNO] << endl;
+            }
+            while (getline(file, line)) {
+                cout << "> " << line << endl;
+            }
+            cout << "\n> Generated " << VKUPNO << " codes! \n> Check codes.txt file!" << endl;
+    
+            outputFile.close();
+            string WCHECK;
+            cout << "> If you want to check codes type Y/y or N/n to exit: ";
+            cin >> WCHECK;
+            if(WCHECK == "Y" || WCHECK == "y")
+            {
+                goto CHECKER;
+            }
+            else if(WCHECK == "N" || WCHECK == "n") {
+                exit(0);
+            }
+            else {
+                cout << "> Wrong option, try again!";
+                sleep(3);
+                exit(0);
+            }
+        }
+
+        CHECKER: {
+            //system("pip install requests");
+            //system("python checker.py");
+            cout << "\n> SOON CHECKER!";
+        }
+
+        cout << "\n> If you want to go from begining type Y/y or if you want to exit N/n: ";
         cin >> goagain;
         if(goagain == "Y" || goagain == "y")
         {
             fromBegining = true;
         }
         else if(goagain == "N" || goagain == "n") {
+            exit(0);
+        }
+        else {
+            cout << "> Wrong option, try again!";
+            sleep(3);
             exit(0);
         }
     } while(fromBegining != false);
