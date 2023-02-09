@@ -68,7 +68,7 @@ int main()
             system("start mar4ee.glitch.me");
         }
         else {
-            cout << "Pogresna opcija!" << endl;
+            cout << "Wrong option, try again!" << endl;
             sleep(3);
             exit(0);
         }
