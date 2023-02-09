@@ -16,7 +16,6 @@ const int DOLZINA = 16;
 const char KARAKTERI[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 int KARAKTERI_LEN = sizeof(KARAKTERI) - 1;
  
-string goagain; 
 
 string genNitro()
 {
@@ -53,16 +52,16 @@ int main()
         int VKUPNO;
         int OPCIJA;
 
-        cout << "\n\n> 1. Generator \n> 2. Checker \n> 3. Exit \n\n> Option: ";
+        cout << "\n\n> 1. Generator \n> 2. Checker \n\n> 0. Exit \n\n> Option: ";
         cin >> OPCIJA;
-        if(OPCIJA == 1) {
+        if(OPCIJA == 0) {
+            exit(0);
+        }
+        else if(OPCIJA == 1) {
             goto GENERATOR;
         }
         else if(OPCIJA == 2) {
             goto CHECKER;
-        }
-        else if(OPCIJA == 3) {
-            exit(0);
         }
         else {
             cout << "Pogresna opcija!" << endl;
@@ -114,13 +113,17 @@ int main()
             cout << "\n> SOON CHECKER!";
         }
 
-        cout << "\n> If you want to go from begining type Y/y or if you want to exit N/n: ";
+        int goagain;
+        cout << "\n> 1. Refresh applicacion \n> 2. Soical \n\n> 3. Exit \n> Option: ";
         cin >> goagain;
-        if(goagain == "Y" || goagain == "y")
+        if(goagain == 1)
         {
             fromBegining = true;
         }
-        else if(goagain == "N" || goagain == "n") {
+        else if(goagain == 2) {
+            system("start https://mar4ee.glitch.me");
+        }
+        else if(goagain == 3) {
             exit(0);
         }
         else {
