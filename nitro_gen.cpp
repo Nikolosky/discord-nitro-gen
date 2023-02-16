@@ -111,9 +111,19 @@ int main()
         }
 
         CHECKER: {
-            //system("pip install requests");
-            system("python checker.py");
-            //cout << "\n> SOON CHECKER!";
+            string c_opcija;
+            cout << "> If you want to install requirements type Y/y or N/n to run checker: ";
+            cin >> c_opcija;
+            if(c_opcija == "Y" || c_opcija == "y") {
+                system("pip install -r requirements.txt");
+                system("python checker.py");
+            }
+            else if(c_opcija == "N" || c_opcija == "n") {
+                system("python checker.py");
+            }
+            else {
+                exit(EXIT_FAILURE);
+            }
         }
 
         int goagain;

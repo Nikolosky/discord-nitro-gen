@@ -1,0 +1,9 @@
+requests
+threading
+pyfuncts
+sys
+httpx
+random
+colorma
+time
+string
