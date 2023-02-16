@@ -113,8 +113,8 @@ int main()
 
         CHECKER: {
             //system("pip install requests");
-            //system("python checker.py");
-            cout << "\n> SOON CHECKER!";
+            system("python checker.py");
+            //cout << "\n> SOON CHECKER!";
         }
 
         int goagain;
