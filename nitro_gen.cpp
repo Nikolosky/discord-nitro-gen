@@ -15,7 +15,6 @@ const int DOLZINA = 16;
  
 const char KARAKTERI[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 int KARAKTERI_LEN = sizeof(KARAKTERI) - 1;
- 
 
 string genNitro()
 {
