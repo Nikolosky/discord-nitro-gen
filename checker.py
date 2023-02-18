@@ -142,5 +142,3 @@ def main():
 
 main()
 input()
-
-# CHECKER FROM https://github.com/WestHeatGT/NitroGenerator-Checker

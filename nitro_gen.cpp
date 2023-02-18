@@ -31,6 +31,7 @@ int main()
     do{
         srand(time(NULL));
         setlocale(LC_ALL, "en_US.utf8");
+        system("Color 04");
         system("title Discord Nitro Generator by Marche15!");
         cout << "   ______    _   __" << endl;
         cout << "  / ____/   / | / /" << endl;
@@ -41,7 +42,6 @@ int main()
         cout << "\n\n> Hello! I am Mar4e 15 yo programmer! \n> Here is super fast discord generator!" << endl;
         sleep(3);
         system("cls");
- 
         cout << "     __  ___                   __ __        " << endl;
         cout << "    /  |/  /  ____ _   _____  / // /   ___  " << endl;
         cout << "   / /|_/ /  / __ `/  / ___/ / // /_  / _ \\" << endl;
@@ -50,7 +50,7 @@ int main()
  
         int VKUPNO;
         int OPCIJA;
-
+        system("Color 02");
         cout << "\n\n> 1. Generator \n> 2. Checker \n> 3. Social \n\n> 0. Exit \n> Option: ";
         cin >> OPCIJA;
 
@@ -60,12 +60,6 @@ int main()
         else if(OPCIJA == 1) {
             goto GENERATOR;
         }
-        
-        cout << "\n> Generated " << VKUPNO << " codes! \n> Check nitros.txt file!" << endl;
- 
-        outputFile.close();
- 
-        cout << "\n> If you want to generate again type Y/y or if you want to exit N/n: ";
         else if(OPCIJA == 2) {
             goto CHECKER;
         }
@@ -73,7 +67,7 @@ int main()
             system("start mar4ee.glitch.me");
         }
         else {
-            cout << "Wrong option, try again!" << endl;
+            cout << "> Wrong option, try again!" << endl;
             sleep(3);
             exit(0);
         }
@@ -96,7 +90,8 @@ int main()
             while (getline(file, line)) {
                 cout << "> " << line << endl;
             }
-            cout << "\n> Generated " << VKUPNO << " codes! \n> Check codes.txt file!" << endl;
+
+            cout << "\n> Generated " << VKUPNO << " codes! \n> Saved in codes.txt file!" << endl;
     
             outputFile.close();
             string WCHECK;
@@ -132,9 +127,9 @@ int main()
             }
         }
 
+
         int goagain;
         cout << "\n> 1. Refresh applicacion \n> 2. Soical \n\n> 0. Exit: ";
-        
         cin >> goagain;
         if(goagain == 0) {
             exit(0);
