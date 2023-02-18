@@ -10,51 +10,46 @@ import string
 from colorama import Fore, init;init(convert = True)
 import time
 
-def generate_code(code_length=16):
-    """Generates a nitro code of 16 length (which is how long nitro codes are)"""
-    characters = string.ascii_letters
-    return "".join(random.choice(characters) for i in range(code_length))
-
 def get_domain():
-    """Simply discords domain for nitro - you can also change the variable to https://discord.com/gifts/ or remove the http:// bit - up to your choosing """
+    """> Simply discords domain for nitro - you can also change the variable to https://discord.com/gifts/ or remove the http:// bit - up to your choosing """
     return f"https://discord.gift/"
 
 def clear():
-    """Clears screen"""
+    """> Clears screen"""
     try:
         os.system("cls")
     except:
         pass
 
 def pprint(text,color,spacing=0):
-    """This lets me print stuff nicely and if I choose to change the interface I won't need to edit lots of individual print statements"""
+    """> This lets me print stuff nicely and if I choose to change the interface I won't need to edit lots of individual print statements"""
     spacestr = spacing * " "
     print(f"{color}[{spacestr}{Fore.WHITE}{text}{color}{spacestr}]{Fore.WHITE}")
 
 def make_title(content):
-    """Titles the window"""
+    """> Titles the window"""
     os.system(f"title {content}")
 
 rps = 0;status="Waiting";total_codes = 0
 def per_second_check():
     global rps,status,total_codes
-    """Calculates actions a second"""
+    """> Calculates actions a second"""
     while True:
-        if status == "Waiting for user":
+        if status == "> Waiting for user":
             make_title(status)
         else:
             time.sleep(1)
             make_title(f"{rps} {status}, {total_codes} total")
             rps = 0
 
-
 def write_code(nitro,file="codes.txt"):
-    """Used for writing down codes - can be on generation, success, retries, ratelimits etc"""
+    """> Used for writing down codes - can be on generation, success, retries, ratelimits etc"""
     f = open(file,"a")
     f.write(f"{nitro}\n")
     f.close()
+    
 def get_written_codes(file="codes.txt"):
-    """Used for reading the file and getting it into a list variable"""
+    """> Used for reading the file and getting it into a list variable"""
     f = open(file)
     allcodes = f.readlines()
     codesall = []
@@ -69,9 +64,9 @@ def get_written_codes(file="codes.txt"):
 enabled = False
 proxy_list = []
 def scrape_proxies(timeout="3000"):
-    """Scrapes proxies off a proxyservice - the timeout variable refers to how fast they are. Lower timeout = better proxies (but less proxies!)"""
+    """> Scrapes proxies off a proxyservice - the timeout variable refers to how fast they are. Lower timeout = better proxies (but less proxies!)"""
     global proxy_list
-    pprint(f"Scraping proxies.",Fore.GREEN,2)
+    pprint(f"> Scraping proxies.",Fore.GREEN,2)
     proxy_url = f"https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout={timeout}&country=all&ssl=all&anonymity=all&simplified=true"
     r = requests.get(f"{proxy_url}")
     for proxy in r.text.splitlines():
@@ -81,7 +76,7 @@ def scrape_proxies(timeout="3000"):
 
 
 def get_proxy():
-    """Determines whether to use a proxy - this is coded so we use a proxy once our ip is ratelimited (as proxies are slow)"""
+    """> Determines whether to use a proxy - this is coded so we use a proxy once our ip is ratelimited (as proxies are slow)"""
     global proxies_enabled
     global proxy_list
     if proxies_enabled == False:
@@ -97,29 +92,29 @@ def get_proxy():
 
 def check_code(nitro):
     global rps,total_codes,proxies_enabled
-    """Uses discord API to check code"""
+    """> Uses discord API to check code"""
     just_code = nitro.split("/")[1]
     api_url = f"https://discord.com/api/v9/entitlements/gift-codes/{just_code}?with_application=true&with_subscription_plan=true"
     try:
         r = httpx.get(f"{api_url}",proxies=get_proxy(),timeout=30)
         total_codes += 1;rps+=1
         if r.status_code == 404:
-            pprint(f"{nitro} INVALID",Fore.RED)
+            pprint(f"{nitro} > INVALID",Fore.RED)
         elif r.status_code == 429:
             pprint(f"{nitro} RATELIMITED",Fore.RED)
             write_code(nitro,"retry.txt")
             proxies_enabled = True
         elif r.status_code == 200:
-            pprint(f"{nitro} VALID",Fore.GREEN)
+            pprint(f"{nitro} > VALID",Fore.GREEN)
             write_code(nitro,"valid.txt")
     except Exception as e:
         if random.randint(1,400) == 1: #don't want to spam users with this
-            pprint(f"{nitro} Timeout",Fore.RED)
+            pprint(f"{nitro} > Timeout",Fore.RED)
         write_code(nitro,"retry.txt")       
 
 
 def check():
-    """Checks nitro codes"""
+    """> Checks nitro codes"""
     pprint("Max threads? (Recommended : 50)",Fore.GREEN)
     max_threads = input()
     try:
@@ -134,14 +129,18 @@ def check():
         threading.Thread(target = check_code, args = (nitro,)).start()
 
 def startprint():
-    """Specifies printing"""
+    """> Specifies printing"""
     sys.stdout = sys.__stdout__
 
 def main():
-    """Manages everything"""
+    """> Manages everything"""
     global status
     clear();startprint()
     threading.Thread(target = per_second_check).start()
     status = "checked this second"
     check()
 
+main()
+input()
+
+# CHECKER FROM https://github.com/WestHeatGT/NitroGenerator-Checker
