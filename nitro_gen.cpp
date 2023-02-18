@@ -6,7 +6,7 @@
 #include <vector>
 #include <Windows.h>
 #include <unistd.h>
- 
+
 using namespace std;
  
 bool fromBegining = false;
@@ -15,8 +15,6 @@ const int DOLZINA = 16;
  
 const char KARAKTERI[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 int KARAKTERI_LEN = sizeof(KARAKTERI) - 1;
- 
-string goagain; 
 
 string genNitro()
 {
@@ -40,8 +38,8 @@ int main()
         cout << "/ /_/ /   / /|  /  " << endl;
         cout << "\\____/   /_/ |_/  " << endl;
  
-        cout << "\n\n> Hello! I am Mar4e 15 yo programmer! \n> Here is super fast discord generator!";
-        sleep(5);
+        cout << "\n\n> Hello! I am Mar4e 15 yo programmer! \n> Here is super fast discord generator!" << endl;
+        sleep(3);
         system("cls");
  
         cout << "     __  ___                   __ __        " << endl;
@@ -51,36 +49,106 @@ int main()
         cout << " /_/  /_/   \\ ___/  /_/       /_/    \\___/" << endl;
  
         int VKUPNO;
- 
-        cout << "\n\n> SOON NITRO CHECKER!" << endl;
-        cout << "> How much to generate: " << endl;
-        cin >> VKUPNO;
- 
-        vector<string> generated;
-        string line;
-        ifstream file("nitros.txt");
-        ofstream outputFile;
-        outputFile.open("nitros.txt");
+        int OPCIJA;
 
-        for (int i = 0; i <= VKUPNO; i++) {
-            outputFile << genNitro() << endl;
-            generated.push_back(genNitro());
-            //cout << generated[VKUPNO] << endl;
+        cout << "\n\n> 1. Generator \n> 2. Checker \n> 3. Social \n\n> 0. Exit \n> Option: ";
+        cin >> OPCIJA;
+
+        if(OPCIJA == 0) {
+            exit(0);
         }
-        while (getline(file, line)) {
-            cout << "> " << line << endl;
+        else if(OPCIJA == 1) {
+            goto GENERATOR;
         }
+        
         cout << "\n> Generated " << VKUPNO << " codes! \n> Check nitros.txt file!" << endl;
  
         outputFile.close();
  
         cout << "\n> If you want to generate again type Y/y or if you want to exit N/n: ";
+        else if(OPCIJA == 2) {
+            goto CHECKER;
+        }
+        else if(OPCIJA == 3) {
+            system("start mar4ee.glitch.me");
+        }
+        else {
+            cout << "Wrong option, try again!" << endl;
+            sleep(3);
+            exit(0);
+        }
+
+        GENERATOR: {
+            cout << "> How much to generate: " << endl;
+            cin >> VKUPNO;
+    
+            vector<string> generated;
+            string line;
+            ifstream file("codes.txt");
+            ofstream outputFile;
+            outputFile.open("codes.txt");
+
+            for (int i = 0; i <= VKUPNO; i++) {
+                outputFile << genNitro() << endl;
+                generated.push_back(genNitro());
+                //cout << generated[VKUPNO] << endl;
+            }
+            while (getline(file, line)) {
+                cout << "> " << line << endl;
+            }
+            cout << "\n> Generated " << VKUPNO << " codes! \n> Check codes.txt file!" << endl;
+    
+            outputFile.close();
+            string WCHECK;
+            cout << "> If you want to check codes type Y/y or N/n to exit: ";
+            cin >> WCHECK;
+            if(WCHECK == "Y" || WCHECK == "y")
+            {
+                goto CHECKER;
+            }
+            else if(WCHECK == "N" || WCHECK == "n") {
+                exit(0);
+            }
+            else {
+                cout << "> Wrong option, try again!";
+                sleep(3);
+                exit(0);
+            }
+        }
+
+        CHECKER: {
+            string c_opcija;
+            cout << "> If you want to install requirements type Y/y or N/n to run checker: ";
+            cin >> c_opcija;
+            if(c_opcija == "Y" || c_opcija == "y") {
+                system("pip install -r requirements.txt");
+                system("python checker.py");
+            }
+            else if(c_opcija == "N" || c_opcija == "n") {
+                system("python checker.py");
+            }
+            else {
+                exit(EXIT_FAILURE);
+            }
+        }
+
+        int goagain;
+        cout << "\n> 1. Refresh applicacion \n> 2. Soical \n\n> 0. Exit: ";
+        
         cin >> goagain;
-        if(goagain == "Y" || goagain == "y")
+        if(goagain == 0) {
+            exit(0);
+        }
+        else if(goagain == 1)
         {
             fromBegining = true;
         }
-        else if(goagain == "N" || goagain == "n") {
+        else if(goagain == 2) {
+            system("start https://mar4ee.glitch.me");
+        }
+        else {
+            cout << "> Wrong option, try again!";
+            sleep(3);
             exit(0);
         }
     } while(fromBegining != false);

@@ -1,4 +1,11 @@
 # discord-nitro-gen
-SIMPLE AND FAST DISCORD NITRO GENERATOR! by Marko Nikoloski
 
-SOON CHECKER!
+### This is first project
+
+This is Discord Nitro Generator. 
+
+Its very fast and simple to create.
+
+# Social
+
+https://mar4ee.glitch.me
