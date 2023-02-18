@@ -60,6 +60,12 @@ int main()
         else if(OPCIJA == 1) {
             goto GENERATOR;
         }
+        
+        cout << "\n> Generated " << VKUPNO << " codes! \n> Check nitros.txt file!" << endl;
+ 
+        outputFile.close();
+ 
+        cout << "\n> If you want to generate again type Y/y or if you want to exit N/n: ";
         else if(OPCIJA == 2) {
             goto CHECKER;
         }
@@ -128,6 +134,7 @@ int main()
 
         int goagain;
         cout << "\n> 1. Refresh applicacion \n> 2. Soical \n\n> 0. Exit: ";
+        
         cin >> goagain;
         if(goagain == 0) {
             exit(0);
