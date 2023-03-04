@@ -2,11 +2,8 @@
 import os
 import requests
 import threading
-import pyfuncts
 import sys
-import httpx
 import random
-import string
 from colorama import Fore, init;init(convert = True)
 import time
 
@@ -24,6 +21,7 @@ def clear():
 def pprint(text,color,spacing=0):
     """> This lets me print stuff nicely and if I choose to change the interface I won't need to edit lots of individual print statements"""
     spacestr = spacing * " "
+    
     print(f"{color}[{spacestr}{Fore.WHITE}{text}{color}{spacestr}]{Fore.WHITE}")
 
 def make_title(content):
@@ -62,48 +60,20 @@ def get_written_codes(file="codes.txt"):
     return codesall
 
 enabled = False
-proxy_list = []
-def scrape_proxies(timeout="3000"):
-    """> Scrapes proxies off a proxyservice - the timeout variable refers to how fast they are. Lower timeout = better proxies (but less proxies!)"""
-    global proxy_list
-    pprint(f"> Scraping proxies.",Fore.GREEN,2)
-    proxy_url = f"https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout={timeout}&country=all&ssl=all&anonymity=all&simplified=true"
-    r = requests.get(f"{proxy_url}")
-    for proxy in r.text.splitlines():
-        proxy_list.append(proxy)
-        if len(proxy_list) % 50 == 0:
-            pprint(f"Scraped {len(proxy_list)} proxies | {proxy}",Fore.GREEN)
-
-
-def get_proxy():
-    """> Determines whether to use a proxy - this is coded so we use a proxy once our ip is ratelimited (as proxies are slow)"""
-    global proxies_enabled
-    global proxy_list
-    if proxies_enabled == False:
-        return None 
-    else:
-        if len(proxy_list) == 0:
-            time.sleep(random.randint(2,10)/10) #stops threads overlapping and causing trouble
-            if len(proxy_list) == 0:
-                scrape_proxies()
-        proxy = random.choice(proxy_list)
-        return f"http://{proxy}"
-
 
 def check_code(nitro):
-    global rps,total_codes,proxies_enabled
+    global rps,total_codes
     """> Uses discord API to check code"""
     just_code = nitro.split("/")[1]
     api_url = f"https://discord.com/api/v9/entitlements/gift-codes/{just_code}?with_application=true&with_subscription_plan=true"
     try:
-        r = httpx.get(f"{api_url}",proxies=get_proxy(),timeout=30)
+        r = requests.get(f"{api_url}",timeout=30)
         total_codes += 1;rps+=1
         if r.status_code == 404:
             pprint(f"{nitro} > INVALID",Fore.RED)
         elif r.status_code == 429:
             pprint(f"{nitro} RATELIMITED",Fore.RED)
             write_code(nitro,"retry.txt")
-            proxies_enabled = True
         elif r.status_code == 200:
             pprint(f"{nitro} > VALID",Fore.GREEN)
             write_code(nitro,"valid.txt")
