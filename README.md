@@ -12,11 +12,15 @@ Checker from https://github.com/webtr333
 
 ```
 git clone https://github.com/Marche15/discord-nitro-gen
-cd discord-nitro-gen
-pip install requirements.txt
-
-Double click nitro_gen.exe and enjoy
 ```
+```
+cd discord-nitro-gen
+```
+```
+pip install requirements.txt
+```
+
+Run nitro_gen.exe
 
 # Social
 
