@@ -20,7 +20,7 @@ cd discord-nitro-gen
 pip install requirements.txt
 ```
 
-Run nitro_gen.exe
+**Run nitro_gen.exe**
 
 # Social
 
