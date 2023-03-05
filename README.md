@@ -1,4 +1,4 @@
-# discord-nitro-gen
+# About
 
 ### This is first project
 
