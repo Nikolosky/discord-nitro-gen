@@ -20,8 +20,12 @@ cd discord-nitro-gen
 pip install requirements.txt
 ```
 
-**Run nitro_gen.exe**
+Run **nitro_gen.exe** and enjoy!
 
 # Social
 
 https://mar4ee.glitch.me
+
+# Warning
+
+This is 
