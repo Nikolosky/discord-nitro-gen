@@ -25,7 +25,7 @@ cd discord-nitro-gen
 pip install requirements.txt
 ```
 
-Run **nitro_gen.exe** and enjoy!
+Run **nitro_gen.exe** and i hope you find free nitro gift!
 
 # Social
 
