@@ -6,11 +6,11 @@ This is Discord Nitro Generator.
 
 Its very fast and simple to create.
 
-Checker from https://github.com/webtr333
+Checker from [@webtr333](https://github.com/webtr333)
 
 # Usage
 
-You need python for checker, download from [here][www.python.org].
+You need python for checker, download from [here](www.python.org).
 
 **Clone repo**
 ```
