@@ -1,4 +1,6 @@
 
+#CHECKER FROM "https://github.com/webtr333"
+
 import os
 import requests
 import threading
@@ -78,7 +80,7 @@ def check_code(nitro):
             pprint(f"{nitro} > VALID",Fore.GREEN)
             write_code(nitro,"valid.txt")
     except Exception as e:
-        if random.randint(1,400) == 1: #don't want to spam users with this
+        if random.randint(1,400) == 1:
             pprint(f"{nitro} > Timeout",Fore.RED)
         write_code(nitro,"retry.txt")       
 
@@ -112,3 +114,4 @@ def main():
 
 main()
 input()
+#CHECKER FROM "https://github.com/webtr333"
